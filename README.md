@@ -130,33 +130,17 @@ After that edit the line in the file using the secret passphrase… can be anyth
 
 http://www.passwordtool.hu/blowfish-password-hash-generator
 
-<pre> sudo nano /usr/share/phpmyadmin/config.inc.php </pre>
+
+sudo nano /usr/share/phpmyadmin/config.inc.php </pre>
 
 Then edit the highlighted line:
-
-
-<?php
-/* vim: set expandtab sw=4 ts=4 sts=4: */
-/**
-* phpMyAdmin sample configuration, you can use it as base for
-* manual configuration. For easier setup you can use setup/
-
+<pre>
 $cfg['blowfish_secret'] = '$2a$07$ln5gsWXQazAkMsKI691mxOVmyDOhmOmS/j8NLyfHAVB/lDKZb24fe'; /* $
 
-/**
-Scroll down the file and add a temp directory config line as shown below:
-
-/**
- * End of servers configuration
- */
- * Directories for saving/loading files from server
- */
 $cfg['UploadDir'] = '';
 $cfg['SaveDir'] = '';
 $cfg['TempDir'] = '/var/lib/phpmyadmin/tmp';
-
-?>
-
+</pre>
 
 Save the file and exit
 
