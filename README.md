@@ -41,15 +41,19 @@ After installing MariaDB, the commands below can be used to stop, start and enab
 
 Run these on Ubuntu 16.04 LTS
 
-<pre> sudo systemctl stop mysql.service
+<pre> 
+sudo systemctl stop mysql.service
 sudo systemctl start mysql.service
-sudo systemctl enable mysql.service </pre>
+sudo systemctl enable mysql.service 
+</pre>
 
 Run these on Ubuntu 18.10 and 18.04 LTS
 
-<pre>sudo systemctl stop mariadb.service
+<pre>
+sudo systemctl stop mariadb.service
 sudo systemctl start mariadb.service
-sudo systemctl enable mariadb.service</pre>
+sudo systemctl enable mariadb.service
+</pre>
 
 Next, run the commands below to secure the database server with a root password if you were not prompted to do so during the installation…
 
@@ -67,7 +71,9 @@ Remove test database and access to it? [Y/n]:  Y
 Reload privilege tables now? [Y/n]:  Y
 Now that MariaDB is installed, to test whether the database server was successfully installed, run the commands below…
 
-<pre>sudo mysql -u root -p</pre>
+<pre>
+sudo mysql -u root -p
+</pre>
 
 type the root password when prompted…
 
@@ -80,15 +86,21 @@ In order to get phpMyAdmin working, you’ll need to install PHP and related mod
 
 However, PHP 7.2 may not be available in Ubuntu default repositories… To run PHP 7.2 on Ubuntu 16.04 and previous, you may need to run the commands below:
 
-<pre> sudo apt-get install software-properties-common
-sudo add-apt-repository ppa:ondrej/php </pre>
+<pre> 
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:ondrej/php 
+</pre>
 Then update and upgrade to PHP 7.2
 
-<pre> sudo apt update</pre> 
+<pre> 
+sudo apt update
+</pre> 
 
 Then run the commands below to install
 
-<pre>sudo apt-get install php7.2 php-tcpdf php7.2-cgi php7.2-mysqli php-pear php7.2-mbstring php7.2-gettext libapache2-mod-php7.2 php7.2-common php-phpseclib php7.2-mysql</pre>
+<pre>
+sudo apt-get install php7.2 php-tcpdf php7.2-cgi php7.2-mysqli php-pear php7.2-mbstring php7.2-gettext libapache2-mod-php7.2 php7.2-common php-phpseclib php7.2-mysql
+</pre>
 
 After installing the above PHP required modules, go and download PHP latest version… You can get it from the link below:
 
@@ -96,15 +108,19 @@ https://www.phpmyadmin.net/downloads/
 
 When you find the version you want, run the commands below to download it.. replacing the package link.. Next, move the extracted files and create a new phpmyadmin directory…
 
-<pre>cd /tmp
+<pre>
+cd /tmp
 wget https://files.phpmyadmin.net/phpMyAdmin/4.8.5/phpMyAdmin-4.8.5-english.tar.gz
 tar xvzf phpMyAdmin-4.8.5-english.tar.gz
-sudo mv phpMyAdmin-4.8.5-english /usr/share/phpmyadmin</pre>
+sudo mv phpMyAdmin-4.8.5-english /usr/share/phpmyadmin
+</pre>
 After that, create these directory and adjust their permissions to support Apache2…
 
-<pre>sudo mkdir -p /var/lib/phpmyadmin/tmp
+<pre>
+sudo mkdir -p /var/lib/phpmyadmin/tmp
 sudo mkdir /etc/phpmyadmin/
-sudo chown -R www-data:www-data /var/lib/phpmyadmin</pre>
+sudo chown -R www-data:www-data /var/lib/phpmyadmin
+</pre>
 
 When you’re done, copy phpMyAdmin sample config file and create a new default config file using the commands below:
 
@@ -112,12 +128,13 @@ When you’re done, copy phpMyAdmin sample config file and create a new default 
 
 After that edit the line in the file using the secret passphrase… can be anything… You can visit the website below to generate blowfish key using its key generator.
 
-# http://www.passwordtool.hu/blowfish-password-hash-generator
+http://www.passwordtool.hu/blowfish-password-hash-generator
 
-<pre>sudo nano /usr/share/phpmyadmin/config.inc.php</pre>
+<pre> sudo nano /usr/share/phpmyadmin/config.inc.php </pre>
 
 Then edit the highlighted line:
-<pre>
+
+
 <?php
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
@@ -138,8 +155,8 @@ $cfg['UploadDir'] = '';
 $cfg['SaveDir'] = '';
 $cfg['TempDir'] = '/var/lib/phpmyadmin/tmp';
 
-/**
-</pre>
+?>
+
 
 Save the file and exit
 
@@ -149,7 +166,8 @@ When you’re done… run the commands below to great phpMyAdmin Apache2 configu
 
 Then copy and paste the lines below into the file and save…
 
-<pre>Alias /phpmyadmin /usr/share/phpmyadmin
+<pre>
+Alias /phpmyadmin /usr/share/phpmyadmin
 
 <Directory /usr/share/phpmyadmin>
     Options SymLinksIfOwnerMatch
@@ -206,6 +224,7 @@ Then copy and paste the lines below into the file and save…
 <Directory /usr/share/phpmyadmin/setup/lib>
     Require all denied
 </Directory>
+
 </pre>
 
 Save the file and exit
